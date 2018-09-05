@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  codespell:
+    docker:
+    - image: circleci/python
+
+    steps:
+    - checkout
+    - run: sudo pip install codespell
+    - run: codespell --skip=".git,./assets"
+
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - codespell
